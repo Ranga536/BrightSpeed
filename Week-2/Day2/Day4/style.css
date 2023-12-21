@@ -1,0 +1,24 @@
+.bground {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+}
+
+.userinput {
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+.optcontainer {
+    margin: 10px;
+    padding: 5px;
+}
+
+.sstyle {
+    padding: 5px;
+    border-width: 1px;
+    border-radius: 5px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body ng-app="app">
+    
+    <div ng-controller="filtercntrl" class="bground">
+        <!-- <input type="text" ng-model = "firstName"/>
+        <input type="text" ng-model = "lastName"/>
+
+        <button ng-click="showName()">Show Name</button>
+        <p>{{firstName}} {{lastName}}</p> -->
+        
+        <!-- orderBy Eaxmple -->
+        <!-- <ol>
+            <li ng-repeat="c in names | orderBy: 'country'">{{c}}</li>
+        </ol> -->
+
+        <!-- Currency Example  -->
+        <!-- <p>{{ price | currency }}</p> -->
+
+        <!-- Filter Example  -->
+
+        <input type="search" class="userinput" ng-model="usersearch" placeholder="Search Something..."/>
+        <div class="optcontainer">
+            <select ng-model="selectedOrder" class="sstyle">
+                <option value="price" selected>Price</option>
+                <option value="category">Category</option>
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+            </select>
+        </div>
+        
+
+        <table border="1" style="border-collapse: collapse" cellpadding="10" >
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+            <tr ng-repeat="item in products | orderBy: selectedOrder | filter: usersearch">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script>
+        var app = angular.module("app", []);
+        app.controller("filtercntrl", ["$scope", function($scope) {
+            // $scope.names = [
+            //     {name:'Jani',country:'Norway'},
+            //     {name:'Carl',country:'Sweden'},
+            //     {name:'Margareth',country:'England'},
+            //     {name:'Hege',country:'Norway'},
+            //     {name:'Joe',country:'Denmark'},
+            //     {name:'Gustav',country:'Sweden'},
+            //     {name:'Birgit',country:'Denmark'},
+            //     {name:'Mary',country:'England'},
+            //     {name:'Kai',country:'Norway'}
+            //     ];
+
+            $scope.products = [
+                {id : 1, name : "pant", category: "clothes", price: 500},
+                {id : 2, name : "Mobile", category: "gadgets", price: 15500},
+                {id : 3, name : "shirt", category: "clothes", price: 600},
+                {id : 4, name : "watch", category: "gadgets", price: 1500},
+                {id : 5, name : "charger", category: "gadgets", price: 2500},
+            ]
+            $scope.selectedOrder = "price";
+        }]);
+
+    </script>
+</body>
+</html>
